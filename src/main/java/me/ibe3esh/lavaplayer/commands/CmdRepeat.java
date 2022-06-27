@@ -1,8 +1,5 @@
-package me.ibe3esh.commands;
+package me.ibe3esh.lavaplayer.commands;
 
-import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
-import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
-import com.sedmelluq.discord.lavaplayer.track.AudioTrackInfo;
 import me.ibe3esh.lavaplayer.GuildMusicManager;
 import me.ibe3esh.lavaplayer.PlayerManager;
 import me.ibe3esh.utils.ExecuteArgs;
@@ -11,8 +8,7 @@ import net.dv8tion.jda.api.entities.GuildVoiceState;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.TextChannel;
 
-public class CmdNowPlaying implements ICommand {
-
+public class CmdRepeat implements ICommand {
     @Override
     public void execute(ExecuteArgs event) {
         final TextChannel channel = event.getTextChannel();
@@ -38,27 +34,21 @@ public class CmdNowPlaying implements ICommand {
         }
 
         final GuildMusicManager musicManager = PlayerManager.getINSTANCE().getMusicManager(event.getGuild());
-        final AudioPlayer audioPlayer = musicManager.audioPlayer;
-        final AudioTrack track = audioPlayer.getPlayingTrack();
+        final boolean newRepeating = !musicManager.scheduler.repeating;
 
-        if (track == null) {
-            channel.sendMessage("There is no track playing currenly.").queue();
-            return;
-        }
+        musicManager.scheduler.repeating = newRepeating;
 
-        final AudioTrackInfo info = track.getInfo();
-
-        channel.sendMessageFormat("Now Playing `%s` by `%s` (Link: <%s>)", info.title, info.author, info.uri).queue();
+        channel.sendMessageFormat("The player has been set to **%s**", newRepeating ? "repeating" : "not repeating").queue();
     }
 
     @Override
     public String getName() {
-        return "nowplaying";
+        return "repeat";
     }
 
     @Override
     public String helpMessage() {
-        return "Shows the currently playing song.";
+        return "Loops the current song.";
     }
 
     @Override

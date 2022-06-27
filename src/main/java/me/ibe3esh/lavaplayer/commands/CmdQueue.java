@@ -1,4 +1,4 @@
-package me.ibe3esh.commands;
+package me.ibe3esh.lavaplayer.commands;
 
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrackInfo;

@@ -1,4 +1,4 @@
-package me.ibe3esh.commands;
+package me.ibe3esh.lavaplayer.commands;
 
 import me.ibe3esh.lavaplayer.GuildMusicManager;
 import me.ibe3esh.lavaplayer.PlayerManager;

@@ -1,6 +1,8 @@
-package me.ibe3esh.commands;
+package me.ibe3esh.lavaplayer.commands;
 
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
+import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
+import com.sedmelluq.discord.lavaplayer.track.AudioTrackInfo;
 import me.ibe3esh.lavaplayer.GuildMusicManager;
 import me.ibe3esh.lavaplayer.PlayerManager;
 import me.ibe3esh.utils.ExecuteArgs;
@@ -9,7 +11,7 @@ import net.dv8tion.jda.api.entities.GuildVoiceState;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.TextChannel;
 
-public class CmdSkip implements ICommand {
+public class CmdNowPlaying implements ICommand {
 
     @Override
     public void execute(ExecuteArgs event) {
@@ -37,24 +39,26 @@ public class CmdSkip implements ICommand {
 
         final GuildMusicManager musicManager = PlayerManager.getINSTANCE().getMusicManager(event.getGuild());
         final AudioPlayer audioPlayer = musicManager.audioPlayer;
+        final AudioTrack track = audioPlayer.getPlayingTrack();
 
-        if (audioPlayer.getPlayingTrack() == null) {
-            channel.sendMessage("There is no track playing currently.").queue();
+        if (track == null) {
+            channel.sendMessage("There is no track playing currenly.").queue();
             return;
         }
 
-        musicManager.scheduler.nextTrack();
-        channel.sendMessage("Skipped the current track.").queue();
+        final AudioTrackInfo info = track.getInfo();
+
+        channel.sendMessageFormat("Now Playing `%s` by `%s` (Link: <%s>)", info.title, info.author, info.uri).queue();
     }
 
     @Override
     public String getName() {
-        return "skip";
+        return "nowplaying";
     }
 
     @Override
     public String helpMessage() {
-        return "Skips to current track.";
+        return "Shows the currently playing song.";
     }
 
     @Override

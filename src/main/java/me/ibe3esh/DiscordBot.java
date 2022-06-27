@@ -2,6 +2,7 @@ package me.ibe3esh;
 
 import io.github.cdimascio.dotenv.Dotenv;
 import me.ibe3esh.commands.*;
+import me.ibe3esh.lavaplayer.commands.*;
 import me.ibe3esh.listeners.CounterListener;
 import me.ibe3esh.utils.JDACommands;
 import net.dv8tion.jda.api.JDA;
@@ -34,6 +35,7 @@ public class DiscordBot {
         jdaCommands.registerCommand(new CmdPlay());
         jdaCommands.registerCommand(new CmdStop());
         jdaCommands.registerCommand(new CmdSkip());
+        jdaCommands.registerCommand(new CmdRepeat());
         jdaCommands.registerCommand(new CmdNowPlaying());
         jdaCommands.registerCommand(new CmdQueue());
         jdaCommands.registerCommand(new CmdProfile());
