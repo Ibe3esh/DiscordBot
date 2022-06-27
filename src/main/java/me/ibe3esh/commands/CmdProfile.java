@@ -41,7 +41,7 @@ public class CmdProfile implements ICommand {
     }
 
     public String helpMessage() {
-        return "This command is to play music.";
+        return "This command is to show profiles.";
     }
 
     @Override
