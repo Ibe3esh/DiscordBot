@@ -20,7 +20,7 @@ public class CmdAvatar implements ICommand {
                     EmbedBuilder embedBuilder = new EmbedBuilder();
                     embedBuilder.setTitle(userTarget.getName() + " | Avatar");
                     embedBuilder.setColor(Color.magenta);
-                    embedBuilder.setImage(userTarget.getAvatarUrl() + "?size=1024");
+                    embedBuilder.setImage(userTarget.getAvatarUrl() + "?size=2048");
                     event.getTextChannel().sendMessage(embedBuilder.build()).queue();
                     embedBuilder.clear();
                     event.getMessage().delete().queue();
