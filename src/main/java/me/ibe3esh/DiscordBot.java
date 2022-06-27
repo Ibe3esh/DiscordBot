@@ -1,10 +1,7 @@
 package me.ibe3esh;
 
 import io.github.cdimascio.dotenv.Dotenv;
-import me.ibe3esh.commands.CmdAvatar;
-import me.ibe3esh.commands.CmdPlay;
-import me.ibe3esh.commands.CmdProfile;
-import me.ibe3esh.commands.CmdSkip;
+import me.ibe3esh.commands.*;
 import me.ibe3esh.listeners.CounterListener;
 import me.ibe3esh.utils.JDACommands;
 import net.dv8tion.jda.api.JDA;
@@ -36,6 +33,7 @@ public class DiscordBot {
         JDACommands jdaCommands = new JDACommands("+");
         jdaCommands.registerCommand(new CmdPlay());
         jdaCommands.registerCommand(new CmdSkip());
+        jdaCommands.registerCommand(new CmdNowPlaying());
         jdaCommands.registerCommand(new CmdProfile());
         jdaCommands.registerCommand(new CmdAvatar());
 
