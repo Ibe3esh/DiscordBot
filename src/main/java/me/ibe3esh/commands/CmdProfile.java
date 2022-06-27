@@ -13,25 +13,22 @@ public class CmdProfile implements ICommand {
 
     @Override
     public void execute(ExecuteArgs event) {
-        String[] args = event.getMessage().getContentRaw().split("\\s");
-        if (args[0].equalsIgnoreCase("+profile")) {
-            List<User> mentionedUser = event.getMessage().getMentionedUsers();
-            if (mentionedUser.size() > 0) {
-                User userTarget = mentionedUser.get(0);
-                event.getGuild().retrieveMember(userTarget).queue(member -> {
-                    EmbedBuilder embedBuilder = new EmbedBuilder();
-                    embedBuilder.setTitle(userTarget.getName() + " | Profile");
-                    embedBuilder.addField("Name", userTarget.getAsTag(), false);
-                    embedBuilder.addField("ID", userTarget.getId(), false);
-                    embedBuilder.addField("Account Created", userTarget.getTimeCreated().format(DateTimeFormatter.RFC_1123_DATE_TIME), false);
-                    embedBuilder.addField("Guild Joined", member.getTimeJoined().format(DateTimeFormatter.RFC_1123_DATE_TIME), false);
-                    embedBuilder.setColor(Color.magenta);
-                    embedBuilder.setThumbnail(userTarget.getAvatarUrl());
-                    event.getTextChannel().sendMessage(embedBuilder.build()).queue();
-                    embedBuilder.clear();
-                    event.getMessage().delete().queue();
-                });
-            }
+        List<User> mentionedUser = event.getMessage().getMentionedUsers();
+        if (mentionedUser.size() > 0) {
+            User userTarget = mentionedUser.get(0);
+            event.getGuild().retrieveMember(userTarget).queue(member -> {
+                EmbedBuilder embedBuilder = new EmbedBuilder();
+                embedBuilder.setTitle(userTarget.getName() + " | Profile");
+                embedBuilder.addField("Name", userTarget.getAsTag(), false);
+                embedBuilder.addField("ID", userTarget.getId(), false);
+                embedBuilder.addField("Account Created", userTarget.getTimeCreated().format(DateTimeFormatter.RFC_1123_DATE_TIME), false);
+                embedBuilder.addField("Guild Joined", member.getTimeJoined().format(DateTimeFormatter.RFC_1123_DATE_TIME), false);
+                embedBuilder.setColor(Color.magenta);
+                embedBuilder.setThumbnail(userTarget.getAvatarUrl());
+                event.getTextChannel().sendMessage(embedBuilder.build()).queue();
+                embedBuilder.clear();
+                event.getMessage().delete().queue();
+            });
         }
     }
 

@@ -31,7 +31,7 @@ public class DiscordBot {
         config = Dotenv.configure().load();
         String token = config.get("TOKEN");
 
-        JDACommands jdaCommands = new JDACommands("+");
+        JDACommands jdaCommands = new JDACommands("!");
         jdaCommands.registerCommand(new CmdPlay());
         jdaCommands.registerCommand(new CmdStop());
         jdaCommands.registerCommand(new CmdSkip());
