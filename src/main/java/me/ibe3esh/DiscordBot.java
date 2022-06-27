@@ -1,6 +1,7 @@
 package me.ibe3esh;
 
 import io.github.cdimascio.dotenv.Dotenv;
+import me.ibe3esh.commands.CmdAvatar;
 import me.ibe3esh.commands.CmdPlay;
 import me.ibe3esh.commands.CmdProfile;
 import me.ibe3esh.listeners.CounterListener;
@@ -34,6 +35,7 @@ public class DiscordBot {
         JDACommands jdaCommands = new JDACommands("+");
         jdaCommands.registerCommand(new CmdPlay());
         jdaCommands.registerCommand(new CmdProfile());
+        jdaCommands.registerCommand(new CmdAvatar());
 
         JDA bot = JDABuilder.create(token, Arrays.asList(INTENTS))
                 .enableCache(CacheFlag.VOICE_STATE)
