@@ -23,7 +23,7 @@ public class CmdQueue implements ICommand {
         final BlockingQueue<AudioTrack> queue = musicManager.scheduler.queue;
 
         if (queue.isEmpty()) {
-            channel.sendMessage("The queue is currently empty").queue();
+            channel.sendMessage("The queue is currently empty.").queue();
             return;
         }
 
