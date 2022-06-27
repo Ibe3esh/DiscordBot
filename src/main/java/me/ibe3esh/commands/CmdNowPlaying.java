@@ -42,7 +42,7 @@ public class CmdNowPlaying implements ICommand {
         final AudioTrack track = audioPlayer.getPlayingTrack();
 
         if (track == null) {
-            channel.sendMessage("").queue();
+            channel.sendMessage("There is no track playing currenly").queue();
             return;
         }
 
