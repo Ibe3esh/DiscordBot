@@ -26,7 +26,7 @@ public class CmdProfile implements ICommand {
                     embedBuilder.addField("Account Created", userTarget.getTimeCreated().format(DateTimeFormatter.RFC_1123_DATE_TIME), false);
                     embedBuilder.addField("Guild Joined", member.getTimeJoined().format(DateTimeFormatter.RFC_1123_DATE_TIME), false);
                     embedBuilder.setColor(Color.pink);
-                    embedBuilder.setThumbnail(userTarget.getAvatarUrl());
+                    embedBuilder.setThumbnail(userTarget.getAvatarUrl() + "?size=2048");
                     event.getTextChannel().sendMessage(embedBuilder.build()).queue();
                     embedBuilder.clear();
                     event.getMessage().delete().queue();
