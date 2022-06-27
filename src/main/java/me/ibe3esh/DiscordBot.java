@@ -32,6 +32,7 @@ public class DiscordBot {
 
         JDACommands jdaCommands = new JDACommands("+");
         jdaCommands.registerCommand(new CmdPlay());
+        jdaCommands.registerCommand(new CmdStop());
         jdaCommands.registerCommand(new CmdSkip());
         jdaCommands.registerCommand(new CmdNowPlaying());
         jdaCommands.registerCommand(new CmdQueue());

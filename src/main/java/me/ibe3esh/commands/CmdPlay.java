@@ -13,7 +13,6 @@ public class CmdPlay implements ICommand {
 
     @Override
     public void execute(ExecuteArgs event) {
-
         if (!event.getMemberVoiceState().inVoiceChannel()) {
             event.getTextChannel().sendMessage("You need to be in a voice channel for this command to work.").queue();
             return;
@@ -21,7 +20,7 @@ public class CmdPlay implements ICommand {
 
         if (!event.getSelfVoiceState().inVoiceChannel()) {
             final AudioManager audioManager = event.getGuild().getAudioManager();
-            final VoiceChannel memberChannel = (VoiceChannel) event.getMemberVoiceState().getChannel();
+            final VoiceChannel memberChannel = event.getMemberVoiceState().getChannel();
 
             audioManager.openAudioConnection(memberChannel);
         }
