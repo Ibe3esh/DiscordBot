@@ -60,7 +60,7 @@ public class CmdQueue implements ICommand {
         final long minutes = timeInMillis / TimeUnit.MINUTES.toMillis(1);
         final long seconds = timeInMillis % TimeUnit.MINUTES.toMillis(1) / TimeUnit.SECONDS.toMillis(1);
 
-        return String.format("%02d:%02d:%02d", hours, minutes, seconds)
+        return String.format("%02d:%02d:%02d", hours, minutes, seconds);
     }
 
     @Override
