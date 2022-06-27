@@ -58,7 +58,7 @@ public class CmdNowPlaying implements ICommand {
 
     @Override
     public String helpMessage() {
-        return "Shows the currently playing song";
+        return "Shows the currently playing song.";
     }
 
     @Override

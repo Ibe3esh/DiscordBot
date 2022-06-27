@@ -54,7 +54,7 @@ public class CmdSkip implements ICommand {
 
     @Override
     public String helpMessage() {
-        return "Skips to current track";
+        return "Skips to current track.";
     }
 
     @Override
