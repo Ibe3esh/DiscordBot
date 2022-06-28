@@ -2,59 +2,21 @@ package me.ibe3esh.commands;
 
 import me.ibe3esh.utils.ExecuteArgs;
 import me.ibe3esh.utils.ICommand;
-import net.dv8tion.jda.api.entities.TextChannel;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class CmdHelp implements ICommand {
 
-    private final List<ICommand> commands = new ArrayList<>();
-
-    public List<ICommand> getCommands() {
-        return commands;
-    }
-
-    public ICommand getCommand(String search) {
-        String searchLower = search.toLowerCase();
-
-        for (ICommand cmd : this.commands) {
-            if (cmd.getName().equals(searchLower) || cmd.getName().contains(searchLower)) {
-                return cmd;
-            }
-        }
-
-        return null;
-    }
-
     @Override
     public void execute(ExecuteArgs event) {
-        List<String> args = Arrays.asList(event.getArgs());
-        TextChannel channel = event.getTextChannel();
+        event.getTextChannel().sendMessage("`!avatar - This command is to show avatars.`");
+        event.getTextChannel().sendMessage("`!help - Shows the list with commands in the bot.`");
+        event.getTextChannel().sendMessage("`!profile - This command is to show profiles.`");
 
-        if (args.isEmpty()) {
-            StringBuffer builder = new StringBuffer();
-
-            builder.append("List of commands\n");
-
-            getCommands().stream().map(ICommand::getName).forEach(
-                    (it) -> builder.append("`").append("!").append(it).append("`\n")
-            );
-
-            channel.sendMessage(builder.toString()).queue();
-            return;
-        }
-
-        String search = args.get(0);
-        ICommand command = getCommand(search);
-
-        if (command == null) {
-            channel.sendMessage("Nothing found for " + search).queue();
-            return;
-        }
-
-        channel.sendMessage(command.helpMessage()).queue();
+        event.getTextChannel().sendMessage("`!nowplaying - Shows the currently playing song.`");
+        event.getTextChannel().sendMessage("`!play - This command is to play music.`");
+        event.getTextChannel().sendMessage("`!queue - Shows the queued up songs.`");
+        event.getTextChannel().sendMessage("`!repeat - Loops the current song.`");
+        event.getTextChannel().sendMessage("`!skip - Skips to current track.`");
+        event.getTextChannel().sendMessage("`!stop - Stops the current song and clears the queue.`");
     }
 
     @Override
