@@ -10,7 +10,6 @@ public class CmdHelp implements ICommand {
         event.getTextChannel().sendMessage("`!avatar - This command is to show avatars.`").queue();
         event.getTextChannel().sendMessage("`!help - Shows the list with commands in the bot.`").queue();
         event.getTextChannel().sendMessage("`!profile - This command is to show profiles.`").queue();
-
         event.getTextChannel().sendMessage("`!nowplaying - Shows the currently playing song.`").queue();
         event.getTextChannel().sendMessage("`!play - This command is to play music.`").queue();
         event.getTextChannel().sendMessage("`!queue - Shows the queued up songs.`").queue();
