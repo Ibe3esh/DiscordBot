@@ -26,8 +26,7 @@ public class CmdHelp implements ICommand {
 
     @Override
     public String helpMessage() {
-        return "Shows the list with commands in the bot\n" +
-                "Usage: `!help [command]`";
+        return "Shows the list with commands in the bot.";
     }
 
     @Override
