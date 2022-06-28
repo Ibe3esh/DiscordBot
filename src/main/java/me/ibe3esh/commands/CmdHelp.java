@@ -1,16 +1,32 @@
 package me.ibe3esh.commands;
 
-import me.ibe3esh.api.CommandManager;
 import me.ibe3esh.utils.ExecuteArgs;
 import me.ibe3esh.utils.ICommand;
 import net.dv8tion.jda.api.entities.TextChannel;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class CmdHelp implements ICommand {
 
-    public static CommandManager manager;
+    private final List<ICommand> commands = new ArrayList<>();
+
+    public List<ICommand> getCommands() {
+        return commands;
+    }
+
+    public ICommand getCommand(String search) {
+        String searchLower = search.toLowerCase();
+
+        for (ICommand cmd : this.commands) {
+            if (cmd.getName().equals(searchLower) || cmd.getName().contains(searchLower)) {
+                return cmd;
+            }
+        }
+
+        return null;
+    }
 
     @Override
     public void execute(ExecuteArgs event) {
@@ -22,7 +38,7 @@ public class CmdHelp implements ICommand {
 
             builder.append("List of commands\n");
 
-            manager.getCommands().stream().map(ICommand::getName).forEach(
+            getCommands().stream().map(ICommand::getName).forEach(
                     (it) -> builder.append("`").append("!").append(it).append("`\n")
             );
 
@@ -31,7 +47,7 @@ public class CmdHelp implements ICommand {
         }
 
         String search = args.get(0);
-        ICommand command = manager.getCommand(search);
+        ICommand command = getCommand(search);
 
         if (command == null) {
             channel.sendMessage("Nothing found for " + search).queue();
