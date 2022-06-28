@@ -10,7 +10,7 @@ public class CounterListener extends ListenerAdapter {
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String[] message = event.getMessage().getContentRaw().split(" ");
         for (String s : message) {
-            if (s.equalsIgnoreCase("kanker")) {
+            if (s.equalsIgnoreCase("kanker") || s.equalsIgnoreCase("kkr") || s.equalsIgnoreCase("kk")) {
                 counter++;
                 event.getChannel().sendMessage("Sukkel MEME L\nKanker Counter: " + counter).queue();
             }
