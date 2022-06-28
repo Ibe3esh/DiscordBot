@@ -4,6 +4,7 @@ import io.github.cdimascio.dotenv.Dotenv;
 import me.ibe3esh.commands.*;
 import me.ibe3esh.lavaplayer.commands.*;
 import me.ibe3esh.listeners.CounterListener;
+import me.ibe3esh.listeners.MemeListener;
 import me.ibe3esh.utils.JDACommands;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
@@ -49,6 +50,7 @@ public class DiscordBot {
                 .setStatus(OnlineStatus.ONLINE)
                 .addEventListeners(jdaCommands)
                 .addEventListeners(new CounterListener())
+                .addEventListeners(new MemeListener())
                 .build();
     }
 
