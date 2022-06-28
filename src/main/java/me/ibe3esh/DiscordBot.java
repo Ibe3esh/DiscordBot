@@ -25,7 +25,8 @@ public class DiscordBot {
             GatewayIntent.GUILD_MESSAGE_REACTIONS,
             GatewayIntent.GUILD_VOICE_STATES,
             GatewayIntent.GUILD_MEMBERS,
-            GatewayIntent.GUILD_PRESENCES};
+            GatewayIntent.GUILD_PRESENCES,
+            GatewayIntent.GUILD_EMOJIS};
 
     public static void main(String[] args) throws LoginException {
         config = Dotenv.configure().load();
