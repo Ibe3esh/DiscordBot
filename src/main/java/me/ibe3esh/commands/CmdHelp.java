@@ -12,6 +12,8 @@ public class CmdHelp implements ICommand {
                         +
                         "`!help - Shows the list with commands in the bot.`\n"
                         +
+                        "`!meme - Shows you a horrible meme.`\n"
+                        +
                         "`!profile - This command is to show profiles.`\n"
                         +
                         "`!nowplaying - Shows the currently playing song.`\n"
