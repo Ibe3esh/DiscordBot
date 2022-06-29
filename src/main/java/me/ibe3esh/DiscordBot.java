@@ -33,16 +33,20 @@ public class DiscordBot {
         String token = config.get("TOKEN");
 
         JDACommands jdaCommands = new JDACommands("!");
-        jdaCommands.registerCommand(new CmdPlay());
-        jdaCommands.registerCommand(new CmdStop());
-        jdaCommands.registerCommand(new CmdSkip());
-        jdaCommands.registerCommand(new CmdRepeat());
-        jdaCommands.registerCommand(new CmdNowPlaying());
-        jdaCommands.registerCommand(new CmdQueue());
-        jdaCommands.registerCommand(new CmdHelp());
-        jdaCommands.registerCommand(new CmdProfile());
+
         jdaCommands.registerCommand(new CmdAvatar());
+        jdaCommands.registerCommand(new CmdHelp());
         jdaCommands.registerCommand(new CmdMeme());
+        jdaCommands.registerCommand(new CmdProfile());
+
+        jdaCommands.registerCommand(new CmdJoin());
+        jdaCommands.registerCommand(new CmdLeave());
+        jdaCommands.registerCommand(new CmdNowPlaying());
+        jdaCommands.registerCommand(new CmdPlay());
+        jdaCommands.registerCommand(new CmdQueue());
+        jdaCommands.registerCommand(new CmdRepeat());
+        jdaCommands.registerCommand(new CmdSkip());
+        jdaCommands.registerCommand(new CmdStop());
 
         JDA bot = JDABuilder.create(token, Arrays.asList(INTENTS))
                 .enableCache(CacheFlag.VOICE_STATE)

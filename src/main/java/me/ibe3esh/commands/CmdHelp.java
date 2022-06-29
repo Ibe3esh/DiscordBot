@@ -16,6 +16,10 @@ public class CmdHelp implements ICommand {
                         +
                         "`!profile - This command is to show profiles.`\n"
                         +
+                        "`!join - Makes the bot join your voice channel.`\n"
+                        +
+                        "`!leave - Leaves the voice channel that the bot is in.`\n"
+                        +
                         "`!nowplaying - Shows the currently playing song.`\n"
                         +
                         "`!play - This command is to play music.`\n"
